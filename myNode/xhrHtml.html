@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>xhr请求  调用nodeServer.js</title>
+</head>
+<body>
+<p id="demo">让 AJAX 改变这段文本。</p>
+
+<button type="button" onclick="postBtn()">点击</button>
+<div id="post">post</div>
+<button type="button" onclick="getBtn()">点击</button>
+<div id="get">get</div>
+<!--<form action="/info">-->
+<!--    <input type="submit" value="信息"/>-->
+<!--</form>-->
+
+<script>
+
+    function postBtn(){
+        var xhr = function () {
+            if(window.XMLHttpRequest){
+                return new XMLHttpRequest();
+            }else{
+                return new ActiveXObject("Microsoft.XMLHTTP");// IE6, IE5 浏览器执行代码
+            }
+        }();
+        xhr.onreadystatechange = function () {
+            switch(xhr.readyState){
+                case 0:
+                    console.log(0,'未初始化...');
+                    break;
+                case 1:
+                    console.log(1,'请求参数已准备，尚未发送请求...');
+                    break;
+                case 3:
+                    console.log(3,'已接收数据长度:'+xhr.responseText.length);
+                    break;
+                case 4:
+                    console.log(4,'响应全部接受完毕');
+                    if((xhr.status >=200 && xhr.status < 300) || xhr.status ==304){
+                        console.log('responseText' +xhr.responseText)
+                    }else{
+                        console.log('error:'+ xhr.status)
+                    }
+                    break;
+            }
+        }
+        var data = '用js原生的xhr请求后端+nodeJs后端接口实现'; //富文本内容
+
+        xhr.open('post','http://localhost:3002/postdata',true);
+        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded"); //formdata数据请求头需设置为application/x-www-form-urlencoded
+        xhr.send('age=20');
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState == 4) {
+                console.log('-------')
+                console.log(JSON.parse(xhr.responseText))
+                document.getElementById('post').innerHTML = JSON.parse(xhr.responseText).age
+            }
+        }
+    }
+    function getBtn() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', 'http://localhost:3002/getdata? name=dd&age=18')
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState == 4) {
+                console.log(xhr.responseText + "-------------")
+                document.getElementById('get').innerHTML = xhr.responseText
+            }
+        }
+    }
+</script>
+</body>
+</html>

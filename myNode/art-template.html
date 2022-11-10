@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>在浏览器中使用art-template</title>
+</head>
+<body>
+<!--模板引擎不关心内容   只关心 {{}} 这个-->
+<!--在浏览器中需要应用这个lib/template-web.js文件-->
+    <script src="node_modules/art-template/lib/template-web.js"></script>
+    <script type="text/template" id="tpl">
+        hello{{ name}}
+    </script>
+    <script>
+        var ret = template('tpl',{
+            name: ' jack'
+        })
+        console.log(ret)
+    </script>
+
+
+</body>
+</html>

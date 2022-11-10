@@ -1,0 +1,22 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "a.js",
+  "bin": {
+    "a": "./bin/a.js"
+  },
+  "scripts": {
+    "test": "aaa"
+  },
+  "author": "hj",
+  "license": "ISC",
+  "dependencies": {
+    "art-template": "^4.13.2",
+    "body-parser": "^1.20.0",
+    "cheerio": "^1.0.0-rc.12",
+    "commander": "^7.2.0",
+    "express": "^4.17.3",
+    "utils-merge": "^1.0.1"
+  }
+}

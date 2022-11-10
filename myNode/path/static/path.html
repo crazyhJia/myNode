@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login    get/post   获取请求参数</title>
+</head>
+<body>
+<div>
+    <label>用户名</label>
+    <input type="text" id="username"/>
+</div>
+<div>
+    <label>密码</label>
+    <input type="password" id="password"/>
+</div>
+<button id="get">get</button>
+<button id="post">post</button>
+<style>
+    body {
+        width:200px;
+        font-size: 2px;
+
+    }
+</style>
+<script>
+    let username = document.getElementById('username')
+    let password = document.getElementById('password')
+    let get = document.getElementById('get')
+    let post = document.getElementById('post')
+    get.onclick = () => {
+        console.log(username.value)
+        fetch(`/api/getLogin?username=${username.value}&
+        password=${password.value}`)
+            .then(res => res.json())
+            .then(res => {
+                console.log(res)
+            })
+    }
+
+</script>
+</body>
+</html>

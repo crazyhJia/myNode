@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>express 的使用</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div>express 的使用</div>
+<button onclick="clickBtn()">点击home</button>
+<div id="divWrap"></div>
+<button onclick="clickBtn2()">点击admin</button>
+<div id="divWrap2"></div>
+<script>
+    function clickBtn() {
+        axios.get('http://localhost:3000/home/index')
+            .then(function (response) {
+                console.log(response);
+                document.getElementById('divWrap').innerHTML = response.data
+            })
+            .catch(function (error) {
+                console.log('qqqqqqqqqqq');
+                console.log(error);
+            });
+    }
+    function clickBtn2() {
+        axios.get('http://localhost:3000/admin/index')
+            .then(function (response) {
+                console.log(response);
+                document.getElementById('divWrap2').innerHTML = response.data
+            })
+            .catch(function (error) {
+                console.log('qqqqqqqqqqq');
+                console.log(error);
+            });
+
+
+    }
+</script>
+</body>
+</html>

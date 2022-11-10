@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+</head>
+<body>
+<h1>我叫：{{ name }}</h1>
+<p>今年 {{ age }}</p>
+<p>来自 {{ province }}</p>
+<p>喜欢 {{each hobbies}} {{ $value }} {{/each}}</p>
+<srcipt>
+    var foo = '{{title}}'
+</srcipt>
+</body>
+</html>

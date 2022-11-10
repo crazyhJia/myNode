@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="one">
+    1
+</div>
+<div class="two">
+    2
+</div>
+<style>
+    .one{
+        width: 200px;
+        height: 100px;
+        background: aquamarine;
+    }
+    .two{
+        width: 200px;
+        height: 100px;
+        position: absolute;
+        z-index: 999;
+        top: 0px;
+        left: 0px;
+        background: rgba(123,123,13,0.2);
+    }
+</style>
+    <script>
+        fetch('http://127.0.0.1:3001/api/aa')
+        .then(res => res.json())
+        .then(res => {
+            console.log(res)
+        })
+    </script>
+</body>
+</html>
