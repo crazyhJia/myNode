@@ -8,3 +8,5 @@ server.use(route);
 server.use(api);
 
 server.start();
+
+console.log('test')
